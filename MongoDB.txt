@@ -1,0 +1,39 @@
+> use futbolfifa
+switched to db futbolfifa
+> db.createCollections("players")
+uncaught exception: TypeError: db.createCollections is not a function :
+@(shell):1:1
+> db.createCollection("players")
+{ "ok" : 1 }
+> db.players.insert({"nombre":"Carlos", "apellido": "Tevez","posicion":"Delantero", "edad":36})
+WriteResult({ "nInserted" : 1 })
+> db.players.insert({"nombre":"Esteban", "apellido": "Andrada","posicion":"Arquero", "edad":29})
+WriteResult({ "nInserted" : 1 })
+> db.players.find()
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36 }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "nombre" : "Esteban", "apellido" : "Andrada", "posicion" : "Arquero", "edad" : 29 }
+> db.players.insert({"nombre":"Frank", "apellido": "Fabra","posicion":"Defensor", "edad":29})
+WriteResult({ "nInserted" : 1 })
+> db.players.insert({"nombre":"Jorman", "apellido": "Campuzano","posicion":"Mediocampista", "edad":24})
+WriteResult({ "nInserted" : 1 })
+> db.players.insert({"nombre":"Franco", "apellido": "Armani","posicion":"Arquero", "edad":33})
+WriteResult({ "nInserted" : 1 })
+> db.players.insert({"nombre":"Ignacio", "apellido": "Fernandez","posicion":"Mediocampista", "edad":30})
+WriteResult({ "nInserted" : 1 })
+> db.players.insert({"nombre":"Lucas", "apellido": "Pratto", "posicion":"Delantero", "edad":32})
+WriteResult({ "nInserted" : 1 })
+> db.players.insert({"nombre":"Javier", "apellido": "Pinola", "posicion":"Defensor", "edad":37})
+WriteResult({ "nInserted" : 1 })
+> db.players.find()
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36 }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "nombre" : "Esteban", "apellido" : "Andrada", "posicion" : "Arquero", "edad" : 29 }
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "nombre" : "Frank", "apellido" : "Fabra", "posicion" : "Defensor", "edad" : 29 }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "nombre" : "Jorman", "apellido" : "Campuzano", "posicion" : "Mediocampista", "edad" : 24 }
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f84a639874bef3a376f6d9c"), "nombre" : "Ignacio", "apellido" : "Fernandez", "posicion" : "Mediocampista", "edad" : 30 }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "nombre" : "Lucas", "apellido" : "Pratto", "posicion" : "Delantero", "edad" : 32 }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "nombre" : "Javier", "apellido" : "Pinola", "posicion" : "Defensor", "edad" : 37 }
+> use teams
+switched to db teams
+> use games
+switched to db games
