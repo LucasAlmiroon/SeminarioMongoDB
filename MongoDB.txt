@@ -1,3 +1,5 @@
+----------------------------------CLASE 1-------------------------------------------------------------------------------------------------------------------
+
 > use futbolfifa
 switched to db futbolfifa
 > db.createCollections("players")
@@ -37,3 +39,187 @@ WriteResult({ "nInserted" : 1 })
 switched to db teams
 > use games
 switched to db games
+
+----------------------------------CLASE 2-------------------------------------------------------------------------------------------------------------------
+> show dbs
+admin       0.000GB
+config      0.000GB
+futbolfifa  0.000GB
+local       0.000GB
+> use futbolfifa
+switched to db futbolfifa
+> db.futbolfifa.find()
+> db.find
+futbolfifa.find
+> db.find()
+uncaught exception: TypeError: db.find is not a function :
+@(shell):1:1
+> db.futbolfifa.find()
+> db.futbolfif.find()
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> show collections
+players
+> db.players.find()
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36 }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "nombre" : "Esteban", "apellido" : "Andrada", "posicion" : "Arquero", "edad" : 29 }
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "nombre" : "Frank", "apellido" : "Fabra", "posicion" : "Defensor", "edad" : 29 }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "nombre" : "Jorman", "apellido" : "Campuzano", "posicion" : "Mediocampista", "edad" : 24 }
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f84a639874bef3a376f6d9c"), "nombre" : "Ignacio", "apellido" : "Fernandez", "posicion" : "Mediocampista", "edad" : 30 }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "nombre" : "Lucas", "apellido" : "Pratto", "posicion" : "Delantero", "edad" : 32 }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "nombre" : "Javier", "apellido" : "Pinola", "posicion" : "Defensor", "edad" : 37 }
+{ "_id" : ObjectId("5f8871ef6f92a8c5b1b8e3fa"), "nombre" : "Ricardo", "apellido" : "Centurion", "posicion" : "Delantero", "edad" : 27 }
+> db.player.insertOne({"nombre":"Fernando", "apellido": "Gago", "posicion": "Mediocampista", "edad": 34})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("5f8873acf41e77b8e99e34d0")
+}
+> db.player.insert([{"nombre": "Emiliano", "apellido": "Amor", "posicion": "Defensor", "edad":25},{"nombre": "Alexander", "apellido": "Dominguez", "posicion": "Arquero", "edad": 33}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 2,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.player.insertMany([{"nombre": "Lisandro", "apellido": "Lopez", "posicion": "Delantero", "edad": 37}, {"nombre": "Marcelo", "apellido": "Diaz", "posicion": "Mediocampista", "edad": 33},
+... {"nombre":"Ivan", "apellido": "Pillud", "posicion": "Defensor", "edad": 34},{"nombre": "Gabriel", "apellido": "Arias", "posicion": "Arquero", "edad": 33}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f887588f41e77b8e99e34d3"),
+                ObjectId("5f887588f41e77b8e99e34d4"),
+                ObjectId("5f887588f41e77b8e99e34d5"),
+                ObjectId("5f887588f41e77b8e99e34d6")
+        ]
+}
+> db.player.find()
+{ "_id" : ObjectId("5f8873acf41e77b8e99e34d0"), "nombre" : "Fernando", "apellido" : "Gago", "posicion" : "Mediocampista", "edad" : 34 }
+{ "_id" : ObjectId("5f88742bf41e77b8e99e34d1"), "nombre" : "Emiliano", "apellido" : "Amor", "posicion" : "Defensor", "edad" : 25 }
+{ "_id" : ObjectId("5f88742bf41e77b8e99e34d2"), "nombre" : "Alexander", "apellido" : "Dominguez", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f887588f41e77b8e99e34d3"), "nombre" : "Lisandro", "apellido" : "Lopez", "posicion" : "Delantero", "edad" : 37 }
+{ "_id" : ObjectId("5f887588f41e77b8e99e34d4"), "nombre" : "Marcelo", "apellido" : "Diaz", "posicion" : "Mediocampista", "edad" : 33 }
+{ "_id" : ObjectId("5f887588f41e77b8e99e34d5"), "nombre" : "Ivan", "apellido" : "Pillud", "posicion" : "Defensor", "edad" : 34 }
+{ "_id" : ObjectId("5f887588f41e77b8e99e34d6"), "nombre" : "Gabriel", "apellido" : "Arias", "posicion" : "Arquero", "edad" : 33 }
+> db.players.find()
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36 }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "nombre" : "Esteban", "apellido" : "Andrada", "posicion" : "Arquero", "edad" : 29 }
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "nombre" : "Frank", "apellido" : "Fabra", "posicion" : "Defensor", "edad" : 29 }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "nombre" : "Jorman", "apellido" : "Campuzano", "posicion" : "Mediocampista", "edad" : 24 }
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f84a639874bef3a376f6d9c"), "nombre" : "Ignacio", "apellido" : "Fernandez", "posicion" : "Mediocampista", "edad" : 30 }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "nombre" : "Lucas", "apellido" : "Pratto", "posicion" : "Delantero", "edad" : 32 }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "nombre" : "Javier", "apellido" : "Pinola", "posicion" : "Defensor", "edad" : 37 }
+{ "_id" : ObjectId("5f8871ef6f92a8c5b1b8e3fa"), "nombre" : "Ricardo", "apellido" : "Centurion", "posicion" : "Delantero", "edad" : 27 }
+> db.players.insert([{"nombre" : "Fernando", "apellido" : "Gago", "posicion" : "Mediocampista", "edad" : 34 },
+... {"nombre" : "Emiliano", "apellido" : "Amor", "posicion" : "Defensor", "edad" : 25 },
+... {"nombre" : "Alexander", "apellido" : "Dominguez", "posicion" : "Arquero", "edad" : 33 },
+... {"nombre" : "Lisandro", "apellido" : "Lopez", "posicion" : "Delantero", "edad" : 37 },
+... {"nombre" : "Marcelo", "apellido" : "Diaz", "posicion" : "Mediocampista", "edad" : 33 },
+... {"nombre" : "Ivan", "apellido" : "Pillud", "posicion" : "Defensor", "edad" : 34 },
+... {"nombre" : "Gabriel", "apellido" : "Arias", "posicion" : "Arquero", "edad" : 33 }])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 7,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.players.find()
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36 }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "nombre" : "Esteban", "apellido" : "Andrada", "posicion" : "Arquero", "edad" : 29 }
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "nombre" : "Frank", "apellido" : "Fabra", "posicion" : "Defensor", "edad" : 29 }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "nombre" : "Jorman", "apellido" : "Campuzano", "posicion" : "Mediocampista", "edad" : 24 }
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f84a639874bef3a376f6d9c"), "nombre" : "Ignacio", "apellido" : "Fernandez", "posicion" : "Mediocampista", "edad" : 30 }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "nombre" : "Lucas", "apellido" : "Pratto", "posicion" : "Delantero", "edad" : 32 }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "nombre" : "Javier", "apellido" : "Pinola", "posicion" : "Defensor", "edad" : 37 }
+{ "_id" : ObjectId("5f8871ef6f92a8c5b1b8e3fa"), "nombre" : "Ricardo", "apellido" : "Centurion", "posicion" : "Delantero", "edad" : 27 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d7"), "nombre" : "Fernando", "apellido" : "Gago", "posicion" : "Mediocampista", "edad" : 34 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d8"), "nombre" : "Emiliano", "apellido" : "Amor", "posicion" : "Defensor", "edad" : 25 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d9"), "nombre" : "Alexander", "apellido" : "Dominguez", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34da"), "nombre" : "Lisandro", "apellido" : "Lopez", "posicion" : "Delantero", "edad" : 37 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34db"), "nombre" : "Marcelo", "apellido" : "Diaz", "posicion" : "Mediocampista", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dc"), "nombre" : "Ivan", "apellido" : "Pillud", "posicion" : "Defensor", "edad" : 34 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dd"), "nombre" : "Gabriel", "apellido" : "Arias", "posicion" : "Arquero", "edad" : 33 }
+> db.players.find({edad:33})
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d9"), "nombre" : "Alexander", "apellido" : "Dominguez", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34db"), "nombre" : "Marcelo", "apellido" : "Diaz", "posicion" : "Mediocampista", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dd"), "nombre" : "Gabriel", "apellido" : "Arias", "posicion" : "Arquero", "edad" : 33 }
+> db.players.find({edad:33}).limit(1)
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+> db.players.findOne({edad:33})
+{
+        "_id" : ObjectId("5f84a61d874bef3a376f6d9b"),
+        "nombre" : "Franco",
+        "apellido" : "Armani",
+        "posicion" : "Arquero",
+        "edad" : 33
+}
+> db.players.find({edad:33,posicion:"Arquero"})
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d9"), "nombre" : "Alexander", "apellido" : "Dominguez", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dd"), "nombre" : "Gabriel", "apellido" : "Arias", "posicion" : "Arquero", "edad" : 33 }
+> db.players.find({},{posicion:"Delantero"})
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a639874bef3a376f6d9c"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8871ef6f92a8c5b1b8e3fa"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d7"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d8"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d9"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34da"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34db"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dc"), "posicion" : "Delantero" }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dd"), "posicion" : "Delantero" }
+> db.players.update({nombre:"Carlos"}, {$set:{ "nacionalidad": "Argentina"}},{upsert:true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.players.find({})
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36, "nacionalidad" : "Argentina" }
+{ "_id" : ObjectId("5f84a5a2874bef3a376f6d98"), "nombre" : "Esteban", "apellido" : "Andrada", "posicion" : "Arquero", "edad" : 29 }
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "nombre" : "Frank", "apellido" : "Fabra", "posicion" : "Defensor", "edad" : 29 }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "nombre" : "Jorman", "apellido" : "Campuzano", "posicion" : "Mediocampista", "edad" : 24 }
+{ "_id" : ObjectId("5f84a61d874bef3a376f6d9b"), "nombre" : "Franco", "apellido" : "Armani", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f84a639874bef3a376f6d9c"), "nombre" : "Ignacio", "apellido" : "Fernandez", "posicion" : "Mediocampista", "edad" : 30 }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "nombre" : "Lucas", "apellido" : "Pratto", "posicion" : "Delantero", "edad" : 32 }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "nombre" : "Javier", "apellido" : "Pinola", "posicion" : "Defensor", "edad" : 37 }
+{ "_id" : ObjectId("5f8871ef6f92a8c5b1b8e3fa"), "nombre" : "Ricardo", "apellido" : "Centurion", "posicion" : "Delantero", "edad" : 27 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d7"), "nombre" : "Fernando", "apellido" : "Gago", "posicion" : "Mediocampista", "edad" : 34 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d8"), "nombre" : "Emiliano", "apellido" : "Amor", "posicion" : "Defensor", "edad" : 25 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d9"), "nombre" : "Alexander", "apellido" : "Dominguez", "posicion" : "Arquero", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34da"), "nombre" : "Lisandro", "apellido" : "Lopez", "posicion" : "Delantero", "edad" : 37 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34db"), "nombre" : "Marcelo", "apellido" : "Diaz", "posicion" : "Mediocampista", "edad" : 33 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dc"), "nombre" : "Ivan", "apellido" : "Pillud", "posicion" : "Defensor", "edad" : 34 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dd"), "nombre" : "Gabriel", "apellido" : "Arias", "posicion" : "Arquero", "edad" : 33 }
+> db.players.deleteMany({edad: 33})
+{ "acknowledged" : true, "deletedCount" : 4 }
+> db.players.deleteOne({edad:29})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.players.find({edad: {$gt: 30}})
+{ "_id" : ObjectId("5f84a57e874bef3a376f6d97"), "nombre" : "Carlos", "apellido" : "Tevez", "posicion" : "Delantero", "edad" : 36, "nacionalidad" : "Argentina" }
+{ "_id" : ObjectId("5f84a670874bef3a376f6d9d"), "nombre" : "Lucas", "apellido" : "Pratto", "posicion" : "Delantero", "edad" : 32 }
+{ "_id" : ObjectId("5f84a696874bef3a376f6d9e"), "nombre" : "Javier", "apellido" : "Pinola", "posicion" : "Defensor", "edad" : 37 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d7"), "nombre" : "Fernando", "apellido" : "Gago", "posicion" : "Mediocampista", "edad" : 34 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34da"), "nombre" : "Lisandro", "apellido" : "Lopez", "posicion" : "Delantero", "edad" : 37 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34dc"), "nombre" : "Ivan", "apellido" : "Pillud", "posicion" : "Defensor", "edad" : 34 }
+> db.players.find({edad: {$lt: 30}})
+{ "_id" : ObjectId("5f84a5de874bef3a376f6d99"), "nombre" : "Frank", "apellido" : "Fabra", "posicion" : "Defensor", "edad" : 29 }
+{ "_id" : ObjectId("5f84a601874bef3a376f6d9a"), "nombre" : "Jorman", "apellido" : "Campuzano", "posicion" : "Mediocampista", "edad" : 24 }
+{ "_id" : ObjectId("5f8871ef6f92a8c5b1b8e3fa"), "nombre" : "Ricardo", "apellido" : "Centurion", "posicion" : "Delantero", "edad" : 27 }
+{ "_id" : ObjectId("5f8876b4f41e77b8e99e34d8"), "nombre" : "Emiliano", "apellido" : "Amor", "posicion" : "Defensor", "edad" : 25 }
